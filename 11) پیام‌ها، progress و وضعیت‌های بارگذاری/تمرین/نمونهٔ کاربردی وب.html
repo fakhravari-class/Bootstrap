@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="نمونهٔ اجرایی جلسهٔ 11 دورهٔ Bootstrap">
+  <title>جلسهٔ 11 | پیام‌ها، progress و وضعیت‌های بارگذاری</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body { font-family: Vazir, Tahoma, sans-serif; }
+    .demo-wrap { min-height: 100vh; }
+    .sample-code { direction: ltr; text-align: left; white-space: pre-wrap; background: #f4f7fa; border-inline-start: 4px solid #2f80ed; border-radius: .5rem; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body class="bg-body-tertiary">
+  <main class="demo-wrap container py-4 py-lg-5">
+    <header class="mb-4">
+      <p class="text-primary fw-semibold mb-1">دورهٔ Bootstrap 5.3.9 · جلسهٔ 11</p>
+      <h1 class="h3">پیام‌ها، progress و وضعیت‌های بارگذاری</h1>
+      <p class="text-body-secondary mb-0">اعلان موفقیت قابل‌بستن و progress دسترس‌پذیر.</p>
+    </header>
+    <section aria-label="نمونهٔ تعاملی" class="bg-white border rounded-4 p-3 p-md-4 mb-4">
+      <div class="container py-4"><div class="alert alert-success alert-dismissible fade show" role="status">افزودن کالا به سبد انجام شد.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="بستن"></button></div><label for="ship" class="form-label">آماده‌سازی سفارش</label><div id="ship" class="progress" role="progressbar" aria-label="پیشرفت آماده‌سازی" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width:60%">۶۰٪</div></div></div>
+    </section>
+    <details open class="bg-white border rounded-4 p-3 p-md-4">
+      <summary class="fw-semibold mb-3">راهنمای کد</summary>
+      <pre class="sample-code mb-0"><code>&lt;div class="container py-4"&gt;&lt;div class="alert alert-success alert-dismissible fade show" role="status"&gt;افزودن کالا به سبد انجام شد.&lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="بستن"&gt;&lt;/button&gt;&lt;/div&gt;&lt;label for="ship" class="form-label"&gt;آماده‌سازی سفارش&lt;/label&gt;&lt;div id="ship" class="progress" role="progressbar" aria-label="پیشرفت آماده‌سازی" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"&gt;&lt;div class="progress-bar" style="width:60%"&gt;۶۰٪&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</code></pre>
+    </details>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
