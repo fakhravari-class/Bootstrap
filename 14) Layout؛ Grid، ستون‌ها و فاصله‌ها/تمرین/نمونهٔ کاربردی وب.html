@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="نمونهٔ اجرایی جلسهٔ 14 دورهٔ Bootstrap">
+  <title>Layout؛ Grid، ستون‌ها و فاصله‌ها | تمرین فروشگاه</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bs-primary: #176b55;
+      --bs-primary-rgb: 23, 107, 85;
+      --bs-body-color: #202938;
+      --bs-body-bg: #f6f7f9;
+    }
+    * { box-sizing: border-box; }
+    html { direction: rtl; }
+    body, body.bg-body-tertiary {
+      margin: 0;
+      background: #f6f7f9 !important;
+      color: #202938;
+      direction: rtl;
+      text-align: right !important;
+      font: 12px/1.8 "Vazir FD-WOL", Tahoma, "Segoe UI", sans-serif;
+    }
+    .demo-wrap { min-height: 100vh; }
+    .demo-wrap :is(header, section, article, h1, h2, h3, h4, h5, h6, p, summary, label, li) {
+      direction: rtl;
+      text-align: right !important;
+    }
+    .demo-wrap > header h1 { font-size: 18px !important; line-height: 1.6; }
+    h1, h2, h3, h4, h5, h6 { color: #202938; line-height: 1.6; }
+    .text-primary { color: #176b55 !important; }
+    .btn-solid.theme-primary { --bs-btn-bg: #176b55; --bs-btn-border-color: #176b55; --bs-btn-hover-bg: #125642; --bs-btn-hover-border-color: #125642; }
+    /* formatted example code */
+    .sample-code {
+      direction: ltr;
+      text-align: left;
+      white-space: pre;
+      background: #f4f7fa;
+      color: #202938;
+      border: 1px solid #dce4eb;
+      border-inline-start: 4px solid #176b55;
+      border-radius: .5rem;
+      padding: 1rem;
+      overflow: auto;
+      font: 13px/1.75 Consolas, "Courier New", monospace;
+      tab-size: 2;
+    }
+    .sample-code code { display: block; min-width: max-content; direction: ltr; text-align: left; unicode-bidi: isolate; font: inherit; color: inherit; }
+    .sample-code .tok-tag { color: #176b55; font-weight: 700; }
+    .sample-code .tok-attr { color: #7048e8; }
+    .sample-code .tok-string { color: #18794e; }
+    .sample-code .tok-punct { color: #627083; }
+    .sample-code .tok-comment { color: #687386; font-style: italic; }
+    .sample-code .tok-text { color: #202938; }
+    .sample-code .tok-keyword { color: #0550ae; font-weight: 600; }
+    .sample-code .tok-number { color: #b54708; }
+
+  </style>
+</head>
+<body class="bg-body-tertiary">
+  <main class="demo-wrap container py-4 py-lg-5">
+    <header class="mb-4">
+      <p class="text-primary fw-semibold mb-1">دورهٔ Bootstrap 5.3.9 · جلسهٔ 3</p>
+      <h1 class="h3">Layout؛ Grid، ستون‌ها و فاصله‌ها</h1>
+      <p class="text-body-secondary mb-0">چیدن ناحیهٔ اصلی و فیلترها با Grid واکنش‌گرا.</p>
+    </header>
+    <section aria-label="نمونهٔ تعاملی" class="bg-white border rounded-4 p-3 p-md-4 mb-4">
+      <div class="container py-4"><div class="row g-3"><div class="col-12 lg:col-8"><div class="p-4 rounded bg-subtle-primary">فهرست محصولات (۸ ستون)</div></div><aside class="col-12 lg:col-4"><div class="p-4 rounded bg-light border">فیلترها (۴ ستون)</div></aside></div></div>
+    </section>
+    <details open class="bg-white border rounded-4 p-3 p-md-4">
+      <summary class="fw-semibold mb-3">راهنمای کد</summary>
+      <pre class="sample-code mb-0"><code>&lt;div class="container py-4"&gt;
+  &lt;div class="row g-3"&gt;
+    &lt;div class="col-12 lg:col-8"&gt;
+      &lt;div class="p-4 rounded bg-subtle-primary"&gt;فهرست محصولات (۸ ستون)&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;aside class="col-12 lg:col-4"&gt;
+      &lt;div class="p-4 rounded bg-light border"&gt;فیلترها (۴ ستون)&lt;/div&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </details>
+  </main>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(() => {
+  const escape = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const span = (kind, value) => '<span class="tok-' + kind + '">' + escape(value) + '</span>';
+  function highlightTag(tag) {
+    if (tag.startsWith('<!--')) return span('comment', tag);
+    const m = tag.match(/^(<\/?)([A-Za-z][\w:-]*)([\s\S]*?)(\/?>)$/);
+    if (!m) return escape(tag);
+    let attrs = m[3].replace(/([\w:-]+)(\s*=\s*)("[^"]*"|'[^']*'|[^\s>]+)/g, (_,name,eq,val) => span('attr',name)+span('punct',eq)+span('string',val));
+    return span('punct',m[1])+span('tag',m[2])+attrs.replace(/([<>])/g,'$1')+span('punct',m[4]);
+  }
+  function highlightCode(source) {
+    const re = /<!--[\s\S]*?-->|<script\b[^>]*>[\s\S]*?<\/script\s*>|<style\b[^>]*>[\s\S]*?<\/style\s*>|<\/?[A-Za-z][^>]*>/gi;
+    let out='', last=0, m;
+    while((m=re.exec(source))) {
+      out += span('text', source.slice(last,m.index));
+      const token=m[0];
+      if(/^<script\b/i.test(token)||/^<style\b/i.test(token)) {
+        const p=token.match(/^(<script\b[^>]*>|<style\b[^>]*>)([\s\S]*?)(<\/script\s*>|<\/style\s*>)$/i);
+        if(p) { out+=highlightTag(p[1]); const kind=/^<script/i.test(p[1])?'js':'css'; const body=p[2].replace(/(\/\*[\s\S]*?\*\/|\/\/[^\n]*|"[^"]*"|'[^']*'|\b(?:const|let|var|function|return|if|else|for|true|false|null|document|querySelector|classList|addEventListener)\b|\b\d+(?:\.\d+)?\b)/g, s => span(s.startsWith('/*')||s.startsWith('//')?'comment':/^['"]/.test(s)?'string':/^\d/.test(s)?'number':'keyword',s)); out+=span('text',body); out+=highlightTag(p[3]); }
+      } else out += highlightTag(token);
+      last=re.lastIndex;
+    }
+    out += span('text',source.slice(last));
+    return out;
+  }
+  document.querySelectorAll('.sample-code code').forEach(code => { const source=code.textContent.trim(); code.innerHTML=highlightCode(source); });
+})();
+</script>
+</body>
+</html>

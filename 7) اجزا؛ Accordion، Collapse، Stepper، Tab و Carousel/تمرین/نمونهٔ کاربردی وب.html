@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تمرین فروشگاه؛ Accordion و مرحله‌های خرید</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>body{font:16px/1.8 Vazir FD-WOL,Tahoma,sans-serif;background:#f5f7fa;color:#17263a}.container{max-width:960px}.panel{background:white;border:1px solid #d8e0e9;border-radius:14px;padding:1.25rem;margin-block:1rem}.sample-code{direction:ltr;text-align:left;white-space:pre;overflow:auto;padding:1rem;background:#f3f7fb;border-left:4px solid #2e78c4;border-radius:8px;font:13px/1.55 Consolas,monospace}</style>
+</head><body><main class="container py-4"><header class="panel"><p class="text-secondary mb-1">تمرین اجرایی فروشگاه روزنو</p><h1 class="h3">پرسش‌های ارسال و مرحله‌های سفارش</h1><p class="mb-0">پرسش‌ها را باز کنید و مسیر سفارش را بین سه مرحله جابه‌جا کنید.</p></header>
+<section class="panel"><h2 class="h5">پرسش‌های پرتکرار</h2><details class="accordion-item" name="faq" open><summary class="accordion-header">هزینهٔ ارسال چطور محاسبه می‌شود؟</summary><div class="accordion-body">هزینه بر اساس شهر و روش ارسال، پیش از پرداخت نمایش داده می‌شود.</div></details><details class="accordion-item" name="faq"><summary class="accordion-header">چطور وضعیت سفارش را ببینم؟</summary><div class="accordion-body">پس از ثبت سفارش، شمارهٔ پیگیری در همین صفحه نشان داده می‌شود.</div></details></section>
+<section class="panel"><h2 class="h5">مسیر خرید</h2><div class="d-flex flex-wrap gap-2 mb-3" role="group" aria-label="مرحله‌های خرید"><button class="btn-solid theme-primary step" data-step="0" aria-current="step">۱. کالا</button><button class="btn-outline theme-secondary step" data-step="1">۲. نشانی</button><button class="btn-outline theme-secondary step" data-step="2">۳. پرداخت</button></div><p id="stepText" aria-live="polite">مرحلهٔ کالا: انتخاب محصول و تعداد.</p></section>
+<section class="panel"><h2 class="h5">راهنمای کد Accordion</h2><pre class="sample-code"><code>&lt;details class="accordion-item" name="faq"&gt;
+  &lt;summary class="accordion-header"&gt;هزینهٔ ارسال؟&lt;/summary&gt;
+  &lt;div class="accordion-body"&gt;هزینه پیش از پرداخت نمایش داده می‌شود.&lt;/div&gt;
+&lt;/details&gt;</code></pre></section></main>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script><script type="module">const steps=['مرحلهٔ کالا: انتخاب محصول و تعداد.','مرحلهٔ نشانی: اطلاعات ارسال را وارد کنید.','مرحلهٔ پرداخت: روش پرداخت را انتخاب کنید.'];document.querySelectorAll('.step').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.step').forEach(item=>{item.removeAttribute('aria-current');item.className='btn-outline theme-secondary step';});button.setAttribute('aria-current','step');button.className='btn-solid theme-primary step';document.querySelector('#stepText').textContent=steps[Number(button.dataset.step)];}));</script></body></html>
